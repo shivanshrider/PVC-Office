@@ -12,6 +12,12 @@
     }
 }
 
+.responsive {
+    width: 100%;
+    height: auto;
+}
+
+
 .city-search {
     max-width: 530px;
     margin: auto;
