@@ -18,8 +18,11 @@
 }
 
 .btn {
-    text-align: center;
+     text-align: center;
     align-items: center;
+    margin: auto;
+    justify-content: center;
+    display: flex;
     width: 140px;
     height: 40px;
     font-size: 1.1em;
@@ -29,8 +32,6 @@
     border: none;
     border-radius: 5px;
     transition: all .4s;
-    margin-left: 45%;
-    margin-right: 80%;
     
    }
    
@@ -81,13 +82,13 @@
 }
 
 .button {
-    width: 110px;
+     width: 110px;
     height: 40px;
     text-align: center;
     align-items: center;
+    margin: auto;
+    justify-content: center;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
     gap: 10px;
     background-color: #004AAD;
     border-radius: 30px;
@@ -100,8 +101,6 @@
     box-shadow: 5px 5px 10px white;
     padding-left: 8px;
     transition-duration: .5s;
-    margin-left: 43%;
-    margin-right: 80%;
   }
   
   .svgIcon {
@@ -171,4 +170,92 @@
 .faq-item h3 {
     margin: 0;
 }
+.card {
+  width: fit-content;
+  background-color: #f2f3f7;
+  border-radius: 0.75em;
+  cursor: pointer;
+  transition: ease 0.2s;
+  box-shadow: 1em 1em 1em #d8dae0b1, -0.75em -0.75em 1em #ffffff;
+  border: 1.5px solid #f2f3f7;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+  display: flex;
+}
+
+.card:hover {
+  background-color: #d3ddf1;
+  border: 1.5px solid #1677ff;
+}
+
+.container {
+  margin-top: 1.25em;
+  margin-bottom: 1.375em;
+  margin-left: 1.375em;
+  margin-right: 2em;
+  display: flex;
+  flex-direction: row;
+  gap: 0.75em;
+  align-items: center;
+  margin: auto;
+}
+
+
+.text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  color: #333;
+  text-align: center;
+}
+
+.time {
+  font-size: 0.875em;
+  color: #777;
+}
+
+.text-link {
+  font-weight: 500;
+  text-decoration: none;
+  color: black;
+}
+
+.button-wrap {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  align-items: center;
+}
+
+.secondary-cta {
+  background-color: transparent;
+  border: none;
+  font-size: 15px;
+  font-weight: 400;
+  color: #666;
+  cursor: pointer;
+}
+
+.primary-cta {
+  font-size: 15px;
+  background-color: transparent;
+  font-weight: 600;
+  color: #1677ff;
+  border: none;
+  border-radius: 1.5em;
+  cursor: pointer;
+}
+
+button:hover {
+  text-decoration: underline;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875em;
+}
+
 
