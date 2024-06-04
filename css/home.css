@@ -294,6 +294,41 @@ button:hover {
 .slides {
   animation: slideAnimation 15s infinite;
 }
+.fade-images {
+  position: relative;
+  height: 100vh; /* make it full height */
+  width: 100%; /* make it full width */
+  margin: 0;
+  padding: 0;
+}
 
+.fade-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: top; /* make the image cover the entire container */
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-image.visible {
+  opacity: 1;
+}
+
+/* make it responsive */
+@media (max-width: 768px) {
+ .fade-images {
+    height: 50vh; /* adjust height for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+ .fade-images {
+    height: 30vh; /* adjust height for even smaller screens */
+  }
+}
 
 
