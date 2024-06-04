@@ -258,4 +258,42 @@ button:hover {
   gap: 0.875em;
 }
 
+.slider {
+  position: relative;
+  width: fit-content;
+  height: fit-content;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.slides {
+  display: flex;
+  transition: transform 3s ease-in-out;
+  width: fit-content; /* Twice the width to fit both images */
+}
+
+.slide {
+  width: 100%;
+  height: auto;
+  border: 0;
+}
+
+@keyframes slideAnimation {
+  0%, 25% {
+      transform: translateX(0);
+  }
+  50%, 75% {
+      transform: translateX(-100%);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
+.slides {
+  animation: slideAnimation 15s infinite;
+}
+
+
 
