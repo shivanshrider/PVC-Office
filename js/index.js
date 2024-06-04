@@ -14,3 +14,15 @@ window.onclick = function(event) {
         popup.style.display = "none";
     }
 }
+const fadeImages = document.querySelectorAll('.fade-image');
+let currentImageIndex = 0;
+
+function fadeInNextImage() {
+  fadeImages[currentImageIndex].classList.remove('visible');
+  currentImageIndex = (currentImageIndex + 1) % fadeImages.length;
+  fadeImages[currentImageIndex].classList.add('visible');
+}
+
+fadeImages[currentImageIndex].classList.add('visible');
+setInterval(fadeInNextImage, 5000);
+
