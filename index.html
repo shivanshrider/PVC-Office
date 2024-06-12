@@ -3,124 +3,161 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome </title>
+    <title>Welcome</title>
 
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet" />
     <link href="css/common.css" rel="stylesheet" />
     <link href="css/home.css" rel="stylesheet" />
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: auto;
+            transition: transform 0.2s;
+        }
+
+        .modal-content:hover .modal-image {
+            transform: scale(1.1);
+        }
+
+        .modal-text {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #333;
+        }
+    </style>
 </head>
 
 <body>
- 
-     <div class="fade-images">
+    <div class="fade-images">
         <img src="img/bg.png" alt="Nature" class="responsive fade-image">
-        <img src="img/Knock! Knock! (2).png" alt="Nature" class="responsive fade-image">
+        <img src="img/bg5.png" alt="Nature" class="responsive fade-image">
         <img src="img/Knock! Knock! (3).png" alt="Nature" class="responsive fade-image">
         <img src="img/Knock! Knock! (4).png" alt="Nature" class="responsive fade-image">
+    </div>
 
-     </div>
- 
-        <h1 class="city-heading">
-            Download Documents
-        </h1>
-<button class="download-button">
-            <div class="docs">
-              <svg
-                viewBox="0 0 24 24"
-                width="20"
-                height="20"
-                stroke="currentColor"
-                stroke-width="2"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="css-i6dzq1"
-              >
-                <path
-                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                ></path>
+    <button class="button2" id="showResultBtn">Show Result</button>
+    <br>
+
+    <h1 class="city-heading">
+        Download Documents
+    </h1>
+
+    <button class="download-button">
+        <div class="docs">
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                 <polyline points="14 2 14 8 20 8"></polyline>
                 <line x1="16" y1="13" x2="8" y2="13"></line>
                 <line x1="16" y1="17" x2="8" y2="17"></line>
                 <polyline points="10 9 9 9 8 9"></polyline>
-              </svg>
-              <a href="documents/final SOP (1).pdf" download="Final SOP's" style="color: white;">SOP's</a>
-            </div>
-            <div class="download">
-              <svg
-                viewBox="0 0 24 24"
-                width="24"
-                height="24"
-                stroke="currentColor"
-                stroke-width="2"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="css-i6dzq1"
-              >
+            </svg>
+            <a href="documents/final SOP (1).pdf" download="Final SOP's" style="color: white;">SOP's</a>
+        </div>
+        <div class="download">
+            <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
-              </svg>
+            </svg>
+        </div>
+    </button>
+    <br>
+    <br>
+    <button class="button" onclick="toggleFAQPopup()">
+        <svg class="svgIcon" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+            <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path>
+        </svg>
+        FAQs
+    </button>
+    <div id="faqPopup" class="faq-popup">
+        <div class="faq-content">
+            <span class="close" onclick="toggleFAQPopup()">&times;</span>
+            <h3>Frequently Asked Questions</h3>
+            <br>
+            <div class="faq-item">
+                <p><b><b>1.</b></b><b> Who can apply for nomination and entity formation?</b></p>
+                <p><b>Ans.</b> Any Faculty/Student who enrolled in the Chandigarh university can apply for any entity.
+                </p>
             </div>
-</button>
-
-        <br><br>
-<button class="button" onclick="toggleFAQPopup()">
-            <svg class="svgIcon" viewBox="0 0 512 512" height="1em" xmlns="http://www.w3.org/2000/svg"><path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm50.7-186.9L162.4 380.6c-19.4 7.5-38.5-11.6-31-31l55.5-144.3c3.3-8.5 9.9-15.1 18.4-18.4l144.3-55.5c19.4-7.5 38.5 11.6 31 31L325.1 306.7c-3.2 8.5-9.9 15.1-18.4 18.4zM288 256a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"></path></svg>
-           FAQs
-        </button>
-         <div id="faqPopup" class="faq-popup">
-            <div class="faq-content">
-                <span class="close" onclick="toggleFAQPopup()">&times;</span>
-                <h3>Frequently Asked Questions</h3>
-                <br>
-                <div class="faq-item">
-                    <p><b><b>1.</b></b><b> Who can apply for nomination and entity formation?</b></p>
-                    <p><b>Ans.</b> Any Faculty/Student who enrolled in the Chandigarh university can apply for any entity.
-                    </p>
-                </div>
-                <div class="faq-item">
-                    <p><b><b>2.</b></b><b> Is propIosal necessary with entity formation ?</b></p>
-                    <p><b>Ans.</b> Yes, Proposal is a necessary document to form any entity.
-                    </p>
-                </div>
-                <div class="faq-item">
-                    <p><b><b>3.</b></b><b> How many entities can be formed? </b></p>
-                    <p><b>Ans.</b> One individual person can form any one entity.
-                    </p>
-                </div>
-                <div class="faq-item">
-                    <p><b><b>4.</b></b><b> Can a student make an entity ?</b></p>
-                    <p><b>Ans.</b> Yes, any student can form an entity. 
-                    </p>
-                </div>
-                <div class="faq-item">
-                    <p><b><b>5.</b></b><b> What is the process to nominate myself as secretary and joint secretary?</b></p>
-                    <p><b>Ans.</b>Students/Faculty who don’t want to create new entity they can follow the below steps:<br> 
-                        <b>1></b> Check the existing Clubs provided by the university document name: List of Club@cu. <br>
-                        <b>2></b> After choosing the club name, students/faculty have to fill the nomination form for any position[Faculty Advisor/Faculty Co-Advisor/ Secretary/Joint Secretary]. <br>
-                        <b>3></b> After Filling the form faculty/.student can submit the form by google form.  <br>
-                        
-                    </p>
-                </div>
-                <div class="faq-item">
-                    <p><b><b>6.</b></b><b> What type of activities/events can be done under entities?</b></p>
-                    <p><b>Ans.</b> Refer, the Guideline Document. 
-                    </p>
-                </div>
-                <div class="faq-item">
-                   <p></b> <a><b>For Queries: </b>Mail us at: <a href="mailto: cocurr.daa@cumail.in ">cocurr.daa@cumail.in </a>  <b>&nbsp&nbsp|&nbspOR Contact</b>&nbsp&nbsp Kunal- <a href="tel:+919896972272">+919896972272</a>
-                    </p>
-                </div>
+            <div class="faq-item">
+                <p><b><b>2.</b></b><b> Is propIosal necessary with entity formation ?</b></p>
+                <p><b>Ans.</b> Yes, Proposal is a necessary document to form any entity.
+                </p>
             </div>
-         </div>
-        <br>
-        <br>         
+            <div class="faq-item">
+                <p><b><b>3.</b></b><b> How many entities can be formed? </b></p>
+                <p><b>Ans.</b> One individual person can form any one entity.
+                </p>
+            </div>
+            <div class="faq-item">
+                <p><b><b>4.</b></b><b> Can a student make an entity ?</b></p>
+                <p><b>Ans.</b> Yes, any student can form an entity.
+                </p>
+            </div>
+            <div class="faq-item">
+                <p><b><b>5.</b></b><b> What is the process to nominate myself as secretary and joint secretary?</b></p>
+                <p><b>Ans.</b>Students/Faculty who don’t want to create new entity they can follow the below steps:<br>
+                    <b>1></b> Check the existing Clubs provided by the university document name: List of Club@cu. <br>
+                    <b>2></b> After choosing the club name, students/faculty have to fill the nomination form for any position[Faculty Advisor/Faculty Co-Advisor/ Secretary/Joint Secretary]. <br>
+                    <b>3></b> After Filling the form faculty/.student can submit the form by google form. <br>
 
+                </p>
+            </div>
+            <div class="faq-item">
+                <p><b><b>6.</b></b><b> What type of activities/events can be done under entities?</b></p>
+                <p><b>Ans.</b> Refer, the Guideline Document.
+                </p>
+            </div>
+            <div class="faq-item">
 
+                <p></b> <a><b>For Queries: </b>Mail us at: <a href="mailto: cocurr.daa@cumail.in ">cocurr.daa@cumail.in </a> <b>&nbsp&nbsp|&nbspOR Contact</b>&nbsp&nbsp Kunal- <a href="tel:+919896972272">+919896972272</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid cities">
         <div class="row">
             <div class="city-card-container col-md">
                 <a href="documents/SecretaryJt Secretary .pdf" download="Secretary">
@@ -163,9 +200,9 @@
             </div>
 
             <div class="city-card-container col-md">
-                <a href="documents/Proposal for Club Nomination Document (1).pdf" download="Proposal Form for entity">
+                <a href="documents/Proposal for Club Nomination Document.pdf" download="Proposal for Club Nomination">
                     <div class="city-card rounded-circle">
-                        <img src="img/SECRETARY (8).png" class="city-img" />
+                        <img src="img/SECRETARY (7).png" class="city-img" />
                     </div>
                 </a>
             </div>
@@ -179,40 +216,89 @@
             </div>
         </div>
     </div>
-<br>
-<br>
-
-
-<a href="https://forms.gle/1xKPa5HGDherbN1x8"> <button class="btn" >Register Now</button> </a>
-<br>
-<br>
-<div class="card">
-    <div class="container">
-      <div class="left">
-        <div class="status-ind">
-      <div class="right">
-        <div class="text-wrap">
-          <p class="text-content">
-            <a><b>For Queries:</b><br>Mail us at: <a href="mailto: cocurr.daa@cumail.in ">cocurr.daa@cumail.in </a> <br> <b>OR Contact</b> <br>&nbsp&nbsp&nbsp&nbsp Kunal- <a href="tel:+919896972272">+919896972272</a>
-          </p>
-        </div>
+    <br>
+    <br>
+    <a href="https://forms.gle/1xKPa5HGDherbN1x8"> <button class="btn">Register Now</button> </a>
+    <br>
+    <br>
+    <div class="card">
+        <div class="container">
+            <div class="left">
+                <div class="status-ind">
+                    <div class="right">
+                        <div class="text-wrap">
+                            <p class="text-content">
+                                <a><b>For Queries:</b><br>Mail us at: <a href="mailto: cocurr.daa@cumail.in ">cocurr.daa@cumail.in </a> <br> <b>OR Contact</b> <br>&nbsp&nbsp&nbsp&nbsp Kunal- <a href="tel:+919896972272">+919896972272</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-      </div>
-    </div>
-</div>    
-<br>
-<br>
+    <br>
+    <br>
     <div class="footer">
         <div class="page-container footer-container">
-            <div class="footer-copyright"> <p>© Department of Academic Affairs- CHANDIGARH UNIVERSITY <br>
-                Developer: <a href="https://www.linkedin.com/in/shivansh-tiwari-48894924a/"> Shivansh Tiwari</a> 
-            </p> </div>
+            <!-- <div class="Developer">Developer: Shivansh Tiwari> </div> -->
+            <div class="footer-copyright">
+                <p>© Department of Academic Affairs- CHANDIGARH UNIVERSITY <br>
+                    Developer: <a href="https://www.linkedin.com/in/shivansh-tiwari-48894924a/"> Shivansh Tiwari</a>
+                </p>
+            </div>
+            <!-- <div class="contact">Email: cocurr.daa@cumail.in> </div> -->
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <img src="img/result.jpg" alt="Sample Image" class="modal-image">
+            <br>
+            <br>
+            <p class="modal-text"><b>NOTE: </b> All details will be shared to shortlisted candidate for above entities on respective mails. <br><b>For more information contact</b> Kunal- <a href="tel:+919896972272">+919896972272</a>
+            </p>
+            </p>
+        </div>
     </div>
 
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("imageModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("showResultBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementById("closeModal");
+
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // Function to toggle FAQ popup
+        function toggleFAQPopup() {
+            var faqPopup = document.getElementById("faqPopup");
+            faqPopup.style.display = (faqPopup.style.display === "none" || faqPopup.style.display === "") ? "block" : "none";
+        }
+    </script>
 
 </body>
 
